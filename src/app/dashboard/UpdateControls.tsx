@@ -49,11 +49,11 @@ export default function UpdateControls({
         <UpdateAnimation fetching={fetching} onComplete={handleComplete} />
       )}
 
-      <div className="bg-white/5 rounded-2xl p-6 mb-6">
+      <div className="bg-surface-low rounded-2xl p-6 mb-6">
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
-            <h2 className="text-lg font-semibold mb-1">Automatic updates</h2>
-            <p className="text-spotify-lightgray text-sm">
+            <h2 className="font-headline text-lg font-semibold mb-1 text-on-surface">Automatic updates</h2>
+            <p className="text-on-surface-variant text-sm">
               {isPaused
                 ? "Daily updates are disabled."
                 : "The playlist is updated every morning at 6 AM UTC."}
@@ -65,7 +65,7 @@ export default function UpdateControls({
             aria-checked={!isPaused}
             onClick={handleToggle}
             className="shrink-0 relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none"
-            style={{ backgroundColor: isPaused ? "#535353" : "#1DB954" }}
+            style={{ backgroundColor: isPaused ? "#2a2a2a" : "#1db954" }}
           >
             <span
               className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
@@ -79,7 +79,7 @@ export default function UpdateControls({
           <button
             onClick={handleUpdate}
             disabled={animating}
-            className="bg-spotify-green hover:bg-green-400 disabled:opacity-60 disabled:cursor-not-allowed text-black font-bold py-2 px-6 rounded-full transition-colors flex items-center gap-2"
+            className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed py-2 px-6 text-sm flex items-center gap-2 transition-shadow"
           >
             {animating && (
               <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">

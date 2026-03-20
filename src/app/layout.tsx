@@ -13,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-spotify-dark text-white min-h-screen">{children}</body>
+      <body className="bg-surface text-on-surface min-h-screen antialiased">
+        {children}
+      </body>
     </html>
   );
 }

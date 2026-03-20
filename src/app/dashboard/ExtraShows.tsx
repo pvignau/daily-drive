@@ -13,8 +13,6 @@ function safeImageUrl(url: string | undefined): string | undefined {
 }
 
 function parseShowId(input: string): string | null {
-  // Accept full URL: https://open.spotify.com/show/4wMWrabr79pA104WEAkcH3
-  // or bare ID: 4wMWrabr79pA104WEAkcH3
   const match = input.match(/show\/([A-Za-z0-9]+)/);
   if (match) return match[1];
   if (/^[A-Za-z0-9]{22}$/.test(input.trim())) return input.trim();
@@ -59,26 +57,26 @@ export default function ExtraShows({
   }
 
   return (
-    <div className="bg-white/5 rounded-2xl p-6 mb-6">
-      <h2 className="text-lg font-semibold mb-1">Extra podcasts</h2>
-      <p className="text-spotify-lightgray text-sm mb-4">
+    <div className="bg-surface-low rounded-2xl p-6 mb-6">
+      <h2 className="font-headline text-lg font-semibold mb-1 text-on-surface">Extra podcasts</h2>
+      <p className="text-on-surface-variant text-sm mb-4">
         Podcasts you listen to without having saved them in your library.
       </p>
 
       {items.length > 0 && (
         <ul className="mb-4 space-y-2">
           {items.map((show) => (
-            <li key={show.id} className="flex items-center justify-between gap-3 text-sm">
-              {show.imageUrl ? (
+            <li key={show.id} className="flex items-center justify-between gap-3 text-sm py-1">
+              {safeImageUrl(show.imageUrl) ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={safeImageUrl(show.imageUrl)} alt="" className="w-9 h-9 rounded shrink-0 object-cover" />
+                <img src={safeImageUrl(show.imageUrl)} alt="" className="w-9 h-9 rounded-DEFAULT shrink-0 object-cover" />
               ) : (
-                <div className="w-9 h-9 rounded bg-white/10 shrink-0 flex items-center justify-center text-base">🎙</div>
+                <div className="w-9 h-9 rounded-DEFAULT bg-surface-high shrink-0 flex items-center justify-center text-base">🎙</div>
               )}
-              <span className="truncate flex-1">{show.name}</span>
+              <span className="truncate flex-1 text-on-surface">{show.name}</span>
               <button
                 onClick={() => handleRemove(show.id)}
-                className="text-spotify-gray hover:text-white shrink-0 transition-colors"
+                className="text-on-surface-variant/50 hover:text-on-surface shrink-0 transition-colors text-lg leading-none"
                 aria-label="Remove"
               >
                 ✕
@@ -95,12 +93,12 @@ export default function ExtraShows({
           onChange={(e) => { setInput(e.target.value); setError(""); }}
           onKeyDown={(e) => e.key === "Enter" && handleAdd()}
           placeholder="Spotify podcast URL or ID"
-          className="flex-1 bg-white/10 rounded-full px-4 py-1.5 text-sm placeholder-spotify-gray focus:outline-none focus:ring-1 focus:ring-spotify-green"
+          className="flex-1 bg-surface-container rounded-full px-4 py-2 text-sm text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-primary"
         />
         <button
           onClick={handleAdd}
           disabled={loading || !input}
-          className="bg-spotify-green hover:bg-green-400 disabled:opacity-50 text-black font-bold px-4 py-1.5 rounded-full text-sm transition-colors"
+          className="btn-primary disabled:opacity-50 px-5 py-2 text-sm"
         >
           {loading ? "..." : "Add"}
         </button>

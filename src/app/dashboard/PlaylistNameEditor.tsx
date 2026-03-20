@@ -55,7 +55,7 @@ export default function PlaylistNameEditor({
         onChange={(e) => setValue(e.target.value)}
         onBlur={commit}
         onKeyDown={handleKeyDown}
-        className="text-lg font-semibold bg-transparent border-b border-spotify-green outline-none focus:border-spotify-green w-full max-w-xs"
+        className="text-lg font-semibold bg-transparent border-b border-primary outline-none focus:border-primary w-full max-w-xs"
         style={{ borderTop: "none", borderLeft: "none", borderRight: "none" }}
       />
     );

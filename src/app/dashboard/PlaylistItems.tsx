@@ -41,17 +41,17 @@ export default function PlaylistItems({ items, blockAction }: PlaylistItemsProps
       {visible.map((item, i) => (
         <li
           key={item.uri}
-          className="group flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-white/5 transition-colors"
+          className="group flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-surface-high transition-colors"
         >
           {/* Podcast indicator */}
           <div
             className={`w-0.5 h-8 rounded-full shrink-0 ${
-              item.type === "episode" ? "bg-spotify-green" : "bg-transparent"
+              item.type === "episode" ? "bg-primary-container" : "bg-transparent"
             }`}
           />
 
           {/* Index */}
-          <span className="text-spotify-gray text-xs w-5 text-right shrink-0">
+          <span className="text-on-surface-variant/60 text-xs w-5 text-right shrink-0">
             {i + 1}
           </span>
 
@@ -64,7 +64,7 @@ export default function PlaylistItems({ items, blockAction }: PlaylistItemsProps
               className="w-9 h-9 rounded shrink-0 object-cover"
             />
           ) : (
-            <div className="w-9 h-9 rounded bg-white/10 shrink-0 flex items-center justify-center text-base">
+            <div className="w-9 h-9 rounded-DEFAULT bg-surface-high shrink-0 flex items-center justify-center text-base">
               {item.type === "episode" ? "🎙" : "🎵"}
             </div>
           )}
@@ -78,7 +78,7 @@ export default function PlaylistItems({ items, blockAction }: PlaylistItemsProps
           </div>
 
           {/* Duration */}
-          <span className="text-spotify-gray text-xs shrink-0">
+          <span className="text-on-surface-variant/60 text-xs shrink-0">
             {formatDuration(item.duration_ms)}
           </span>
 
@@ -87,7 +87,7 @@ export default function PlaylistItems({ items, blockAction }: PlaylistItemsProps
             <button
               onClick={() => handleBlock(item.uri)}
               title="Exclude this track"
-              className="opacity-0 group-hover:opacity-100 text-spotify-gray hover:text-white text-base shrink-0 w-5 h-5 flex items-center justify-center transition-opacity"
+              className="opacity-0 group-hover:opacity-100 text-on-surface-variant/60 hover:text-white text-base shrink-0 w-5 h-5 flex items-center justify-center transition-opacity"
             >
               ×
             </button>

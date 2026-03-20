@@ -67,14 +67,14 @@ export default function SettingsPanel({
   }
 
   return (
-    <div className="bg-white/5 rounded-2xl p-6 mb-6">
-      <h2 className="text-lg font-semibold mb-5">Settings</h2>
+    <div className="bg-surface-low rounded-2xl p-6 mb-6">
+      <h2 className="font-headline text-lg font-semibold mb-5 text-on-surface">Settings</h2>
 
       {/* Duration slider */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
           <label className="text-sm font-medium">Target duration</label>
-          <span className="text-sm text-spotify-green font-semibold">
+          <span className="text-sm text-primary font-semibold">
             {formatDurationLabel(duration)}
           </span>
         </div>
@@ -87,7 +87,7 @@ export default function SettingsPanel({
           onChange={handleDurationChange}
           className="w-full accent-spotify-green"
         />
-        <div className="flex justify-between text-xs text-spotify-lightgray mt-1">
+        <div className="flex justify-between text-xs text-on-surface-variant mt-1">
           <span>15 min</span>
           <span>2h</span>
         </div>
@@ -103,8 +103,8 @@ export default function SettingsPanel({
               onClick={() => toggleDay(day)}
               className={`w-9 h-9 rounded-full text-sm font-semibold transition-colors ${
                 days.has(day)
-                  ? "bg-spotify-green text-black"
-                  : "bg-white/10 text-spotify-lightgray hover:bg-white/20"
+                  ? "bg-primary-container text-on-primary"
+                  : "bg-surface-high text-on-surface-variant hover:bg-surface-highest"
               }`}
             >
               {DAY_LABELS[day]}
@@ -117,7 +117,7 @@ export default function SettingsPanel({
       <div>
         <div className="flex items-center justify-between mb-2">
           <label className="text-sm font-medium">Discovery ratio</label>
-          <span className="text-sm text-spotify-green font-semibold">
+          <span className="text-sm text-primary font-semibold">
             {Math.round(ratio * 100)}%
           </span>
         </div>
@@ -130,7 +130,7 @@ export default function SettingsPanel({
           onChange={handleRatioChange}
           className="w-full accent-spotify-green"
         />
-        <div className="flex justify-between text-xs text-spotify-lightgray mt-1">
+        <div className="flex justify-between text-xs text-on-surface-variant mt-1">
           <span>Familiar</span>
           <span>Discovery</span>
         </div>

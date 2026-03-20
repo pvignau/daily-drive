@@ -196,7 +196,7 @@ export default async function Dashboard() {
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <span className="text-3xl">🚗</span>
-            <h1 className="text-2xl font-bold">Daily Drive</h1>
+            <h1 className="font-headline text-2xl font-bold">Daily Drive</h1>
           </div>
           <form
             action={async () => {
@@ -206,7 +206,7 @@ export default async function Dashboard() {
           >
             <button
               type="submit"
-              className="text-spotify-lightgray hover:text-white text-sm transition-colors"
+              className="text-on-surface-variant hover:text-white text-sm transition-colors"
             >
               Sign out
             </button>
@@ -214,15 +214,15 @@ export default async function Dashboard() {
         </div>
 
         {/* User + status */}
-        <div className="bg-white/5 rounded-2xl p-6 mb-6">
-          <p className="text-spotify-lightgray text-sm mb-1">Signed in as</p>
+        <div className="bg-surface-low rounded-2xl p-6 mb-6">
+          <p className="text-on-surface-variant text-sm mb-1">Signed in as</p>
           <p className="text-xl font-semibold mb-4">
             {user!.displayName ?? user!.email ?? user!.spotifyId}
           </p>
 
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm mb-3">
             <div>
-              <span className="text-spotify-lightgray">Last updated </span>
+              <span className="text-on-surface-variant">Last updated </span>
               <span className="font-medium">{lastRunText}</span>
             </div>
             {user!.playlistId && (
@@ -230,7 +230,7 @@ export default async function Dashboard() {
                 href={`https://open.spotify.com/playlist/${user!.playlistId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-spotify-green hover:underline font-medium"
+                className="text-primary hover:underline font-medium"
               >
                 Open in Spotify ↗
               </a>
@@ -276,23 +276,23 @@ export default async function Dashboard() {
 
         {/* Playlist content */}
         {playlistItems.length > 0 && (
-          <div className="bg-white/5 rounded-2xl p-6 mb-6">
+          <div className="bg-surface-low rounded-2xl p-6 mb-6">
             <div className="flex items-center justify-between mb-4">
               <PlaylistNameEditor
                 name={user!.playlistName}
                 saveAction={updatePlaylistName}
               />
-              <span className="text-spotify-lightgray text-sm">
+              <span className="text-on-surface-variant text-sm">
                 {playlistItems.length} tracks · {totalDuration(playlistItems)}
               </span>
             </div>
 
             {/* Stats */}
             <div className="flex gap-4 mb-5 text-sm">
-              <span className="bg-white/10 rounded-full px-3 py-1">
+              <span className="bg-surface-high rounded-full px-3 py-1">
                 🎵 {tracks.length} songs
               </span>
-              <span className="bg-white/10 rounded-full px-3 py-1">
+              <span className="bg-surface-high rounded-full px-3 py-1">
                 🎙 {episodes.length} podcast episodes
               </span>
             </div>
