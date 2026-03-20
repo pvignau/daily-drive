@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  spotifyId    String    @unique
+  email        String?
+  displayName  String?
+  accessToken  String
+  refreshToken String
+  tokenExpiry  DateTime
+  playlistId       String?
+  pauseUpdates     Boolean   @default(false)
+  extraShows       String    @default("[]") // JSON {id,name}[]
+  playlistName     String    @default("🚗 Daily Drive")
+  targetDuration   Int       @default(60)        // target playlist duration in minutes
+  activeDays       String    @default("1,2,3,4,5") // comma-separated day numbers (0=Sun,6=Sat)
+  blockedTrackUris String    @default("[]")       // JSON string[] of Spotify track URIs
+  discoveryRatio   Float     @default(0.33)       // 0=all comfort, 1=all discovery
+  createdAt        DateTime  @default(now())
+  lastRun          DateTime?
+}

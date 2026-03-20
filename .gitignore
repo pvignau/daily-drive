@@ -1,0 +1,19 @@
+# env
+.env
+.env.*
+!.env.example
+
+# next.js
+.next/
+out/
+
+# database
+*.db
+*.db-journal
+
+# dependencies
+node_modules/
+
+# misc
+.DS_Store
+*.pem
